@@ -1,5 +1,5 @@
 import org.jibble.pircbot.PircBot
 
-class MyBot extends PircBot {
-  setName("MyBot")
+class MyBot(val nick: String) extends PircBot {
+  setName(nick)
 }
