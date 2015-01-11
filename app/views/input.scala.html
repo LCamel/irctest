@@ -1,0 +1,20 @@
+@()
+
+<script type="text/javascript">
+var wsUri = "ws://echo.websocket.org/";
+
+function connect() {
+    console.log(">>>> connect()");
+    
+    var ws = new WebSocket(wsUri);
+    ws.onopen = function () { console.log("onopen"); }    
+    ws.onclose = function () { console.log("onclose"); }    
+    ws.onmessage = function () { console.log("onmessage"); }    
+    ws.onerror = function () { console.log("onerror"); }
+}
+</script>
+
+<form action="http://www.google.com.tw">
+    <textarea rows="24" cols="80"></textarea>
+    <input type="button" value="connect" onclick="connect()"></input>
+</form>
