@@ -1,5 +1,6 @@
 import play.api.GlobalSettings
 import play.api.Application
+import irctest.MyAgent
 
 object Global extends GlobalSettings {
   println("==== init!")

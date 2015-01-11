@@ -1,3 +1,5 @@
+package irctest
+
 object MyAgent {
   val nick = System.getenv("nick");
   val bot = new MyBot(nick)
@@ -9,5 +11,8 @@ object MyAgent {
   }
   def onStop() {
     bot.disconnect()
+  }
+  def send(message: String) {
+    bot.sendMessage("#lcameltest", message)
   }
 }
