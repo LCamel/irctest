@@ -1,14 +1,16 @@
 import play.api.GlobalSettings
+import play.api.Application
 
 object Global extends GlobalSettings {
   println("==== init!")
-  val nick = System.getenv("nick");
-  println("env: nick: " + nick)
   
-  /*
-  val bot = new MyBot(nick)
-  bot.setVerbose(true);
-  bot.connect("chat.freenode.net")
-  bot.joinChannel("#lcameltest")
-  */
+  override def onStart(app: Application) {
+    println("==== onStart()")
+    MyAgent.onStart()
+  }
+
+  override def onStop(app: Application) {
+    println("==== onStop()")
+    MyAgent.onStop()
+  }
 }
