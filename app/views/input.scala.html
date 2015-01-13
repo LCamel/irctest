@@ -26,11 +26,15 @@ function send() {
     ws.send(inputLine.value);
     inputLine.value = "";
 }
+
+document.addEventListener("DOMContentLoaded", connect, false);
 </script>
 
-<form action="http://www.google.com.tw">
+<form>
     <textarea rows="24" cols="80" id="messages"></textarea>
     <input type="text" id="inputLine"></input>
+    <!--
     <input type="button" value="connect" onclick="connect()"></input>
+      -->
     <input type="button" value="send" onclick="send()"></input>
 </form>
