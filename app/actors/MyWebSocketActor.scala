@@ -10,6 +10,8 @@ object MyWebSocketActor {
 }
 
 class MyWebSocketActor(out: ActorRef) extends Actor {
+  out ! "[server greeting]"
+  
   val listener = new MyAgent.Listener {
     def onMessage(message: String) {
       out ! "message from irc: " + message
