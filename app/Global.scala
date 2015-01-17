@@ -3,15 +3,15 @@ import play.api.Application
 import irctest.MyAgent
 
 object Global extends GlobalSettings {
-  println("==== init!")
+  println("==== Global init!")
   
   override def onStart(app: Application) {
-    println("==== onStart()")
+    println("==== Global onStart()")
     MyAgent.onStart()
   }
 
   override def onStop(app: Application) {
-    println("==== onStop()")
+    println("==== Global onStop()")
     MyAgent.onStop()
   }
 }
