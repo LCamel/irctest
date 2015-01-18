@@ -3,8 +3,7 @@ package irctest
 import scala.collection.mutable.Set
 
 object MyAgent {
-  val nick = System.getenv("nick");
-  val bot = new MyBot(nick)
+  val bot = new MyBot(Config.name)
   bot.setVerbose(true);
 
   trait Listener {
@@ -15,8 +14,10 @@ object MyAgent {
   def removeListener(listener: Listener) { listeners -= listener }
 
   def onStart() {
-    bot.connect("chat.freenode.net")
-    bot.joinChannel("#lcameltest")
+    bot.connect(Config.server)
+    for (c <- Config.channels) {
+      bot.joinChannel(c)
+    }
   }
   def onStop() {
     bot.disconnect()
