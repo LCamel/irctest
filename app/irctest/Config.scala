@@ -10,17 +10,17 @@ object Config {
   val channels = config.getStringList("channels").asScala
   val name = config.getString("name")
 
-}
 
-  /*
   def main(args: Array[String]) {
-    // ./target/scala-2.11/classes/irctest.conf
+    // for testing
+    // cp conf/irctest.conf ./target/scala-2.11/classes/irctest.conf
     val config = ConfigFactory.load("irctest").getConfig("irctest")
     println("config: " + config)
     for (x <- config.getStringList("channels").asScala) {
       println("x: " + x)
     }
+    println("encrypted password: " + config.getString("encryptedPassword"))
     println("hi2")
   }
-  */
 
+}
