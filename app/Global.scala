@@ -26,6 +26,7 @@ object Global extends GlobalSettings {
     println("===================")
     println("Play.isProd: " + Play.isProd)
     println("request.secure: " + request.secure)
+    println("request.headers: " + request.headers)
     println("===================")
     if (Play.isProd && !request.secure) {
       Some(controllers.Secure.redirect)
