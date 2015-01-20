@@ -27,8 +27,9 @@ object Global extends GlobalSettings {
     println("Play.isProd: " + Play.isProd)
     println("request.secure: " + request.secure)
     println("request.headers: " + request.headers)
+    println("request.headers: " + request.headers.get("x-forwarded-proto"))
     println("===================")
-    if (Play.isProd && !request.secure) {
+    if (Play.isProd && !request.headers.get("x-forwarded-proto").getOrElse("").contains("https")) {
       Some(controllers.Secure.redirect)
     } else {
       super.onRouteRequest(request)
