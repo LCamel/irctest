@@ -1,0 +1,12 @@
+@(loginForm: Form[irctest.LoginData])
+
+@main("Login") {
+
+Login
+
+@helper.form(action = routes.Application.loginPost) {
+  @helper.inputText(loginForm("password"))
+  <input type="submit" value="submit">
+}
+
+}
