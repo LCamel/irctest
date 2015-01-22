@@ -23,12 +23,6 @@ object Global extends GlobalSettings {
   // http://stackoverflow.com/questions/19147147/best-way-to-force-playframework-2-to-always-use-ssl
   // https://www.playframework.com/documentation/2.3.x/Production
   override def onRouteRequest(request: RequestHeader): Option[Handler] = {
-    println("===================")
-    println("Play.isProd: " + Play.isProd)
-    println("request.secure: " + request.secure)
-    println("request.headers: " + request.headers)
-    println("request.headers: " + request.headers.get("x-forwarded-proto"))
-    println("===================")
     if (Play.isProd && !request.headers.get("x-forwarded-proto").getOrElse("").contains("https")) {
       Some(controllers.Secure.redirect)
     } else {
