@@ -5,6 +5,7 @@ import play.api.mvc.Handler
 import play.api.mvc.RequestHeader
 import play.api.Play
 import play.api.Play.current
+import play.api.mvc.Results.TemporaryRedirect
 
 object Global extends GlobalSettings {
   println("==== Global init!")
@@ -26,7 +27,15 @@ object Global extends GlobalSettings {
     if (Play.isProd && !request.headers.get("x-forwarded-proto").getOrElse("").contains("https")) {
       Some(controllers.Secure.redirect)
     } else {
-      super.onRouteRequest(request)
+      // TODO: reverse
+      if (request.path.startsWith("/assets/") || request.path.startsWith("/login")) {
+        super.onRouteRequest(request)
+      } else {
+        request.session.get("authenticated") match {
+          case Some("true") => super.onRouteRequest(request)
+          case _            => Some(controllers.Login.redirectToLoginGet)
+        }
+      }
     }
   }
 
