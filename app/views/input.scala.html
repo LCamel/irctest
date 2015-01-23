@@ -2,8 +2,14 @@
 
 <script type="text/javascript">
 //var wsUri = "ws://echo.websocket.org/";
-var wsUri = "ws://127.0.0.1:9000/ws"; // TODO: webSocketURL()
+//var wsUri = "ws://127.0.0.1:9000/ws"; // TODO: webSocketURL()
+
+var wsUri = ((location.protocol == "http:") ? "ws:" : "wss:")
+    + "//" + location.hostname + ":" + location.port
+    + "@(routes.Application.ws)";
+
 var ws;
+
 
 function connect() {
     console.log(">>>> connect()");
