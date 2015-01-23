@@ -5,4 +5,6 @@
 #export $(cat .env | xargs)
 #./activator run
 
+#export JAVA_OPTS=-Dhttps.port=9443
+
 env $(cat .env | xargs)   ./activator run
