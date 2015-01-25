@@ -1,0 +1,2 @@
+export APPLICATION_SECRET= # run "./activator play-generate-secret" and paste it here
+export LOGIN_PASSWORD= # choose your own password

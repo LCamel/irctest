@@ -1,6 +1,7 @@
 package controllers
 
 import irctest.LoginData
+import irctest.Config
 import play.api._
 import play.api.mvc._
 import play.api.data.Form
@@ -23,7 +24,7 @@ object Login extends Controller {
   def loginPost = Action { request =>
     println("==== Application loginPost: request: " + request)
     val loginData = loginForm.bindFromRequest()(request).get
-    val authenticated = if (loginData.password == "aaa") { "true" } else { "false" }
+    val authenticated = if (loginData.password == Config.loginPassword) { "true" } else { "false" }
     Redirect(routes.Application.index()).withSession("authenticated" -> authenticated)
   }
 }

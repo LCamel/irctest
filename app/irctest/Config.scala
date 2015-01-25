@@ -6,6 +6,8 @@ import scala.collection.JavaConverters._
 object Config {
   private val config = ConfigFactory.load("irctest").getConfig("irctest")
 
+  val loginPassword = play.Play.application().configuration().getString("login.password")
+
   val server = config.getString("server")
   val channels = config.getStringList("channels").asScala
   val name = config.getString("name")
