@@ -27,10 +27,14 @@ function addMessage(s) {
     messages.value += s + "\n";
 }
 
-function send() {
-    var inputLine = document.getElementById("inputLine");
-    ws.send(inputLine.value);
-    inputLine.value = "";
+function send(obj) {
+    ws.send(JSON.stringify(obj));
+}
+
+function onLineInput() {
+    var input = document.getElementById("inputLine");
+    send({"op": "raw", "data": input.value});
+    input.value = "";
 }
 
 document.addEventListener("DOMContentLoaded", connect, false);
@@ -42,5 +46,5 @@ document.addEventListener("DOMContentLoaded", connect, false);
     <!--
     <input type="button" value="connect" onclick="connect()"></input>
       -->
-    <input type="button" value="send" onclick="send()"></input>
+    <input type="button" value="send" onclick="onLineInput()"></input>
 </form>
